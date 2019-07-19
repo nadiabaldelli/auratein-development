@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro&display=swap');
+*{
+    box-sizing: border-box;
+	font-family: 'Abel', sans-serif;
+    overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+/*---------------------------- Header ----------------------*/
+.header-section{
+	background-image: url('images/background-header.jpg');
+	height: 900px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.logoname{
+	position: absolute;
+    clear: both;
+    margin-top: 1%;
+}
+.nav-bar-box{
+    width: 100%;
+    margin-left: 25%;
+    margin-top: 3%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
+.nav-bar--{
+    display: inline-block;
+    list-style-type: none;
+    margin-left: 5%;
+}
+.menu-bars{
+	clear: both;
+    margin-left: 25%;
+    position: absolute;
+    margin-top: -1%;
+}
+.nav-an{
+	color: black;
+	font-family:'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    font-size: 900;
+    text-decoration: none;
+}
+.nav-an:hover{
+	color: #49c5b6;
+}
+.downarrow{
+	position: absolute;
+    margin-top: 30%;
+    margin-left: 50%;
+}
+/*---------------------------- About Us Section ----------------------*/
+.main-aboutus{
+    display: flex;
+    padding: 3%;
+}
+.img-aboutus{
+	width: 100%;
+}
+.text-aboutus{
+    width: 100%;
+    padding-top: 4%;
+    padding-left: 2%;
+    margin-left: 5%;
+}
+.heading-about{
+	font-size: 4em;
+	margin-right: 5%;
+	padding-top: 3%;
+}
+.para-aboutus{
+	font-size: 21px;
+    font-family: Source Sans Pro;
+    padding-top: 10%;
+}
+.aboutus-span{
+	color: #49c5b6;
+}
