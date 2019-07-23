@@ -46,18 +46,21 @@
 .nav-an:hover{
 	color: #49c5b6;
 }
-.downarrow{
+.down-arrow{
 	position: absolute;
-    margin-top: 2%;
-    margin-left: 50%;
+    top: 795px;
+    left: 50%;
 }
 .text-one{
-    padding: 7% 6%;
+    padding: 5% 6%;
     margin-right: 63%;
-    font-size: 3em;
+    font-size: 4em;
 }
 .get-span{
     color: #49c5b6;
+}
+.btn-get-started{
+    padding-bottom: 5%;
 }
 .get-btn{
     font-size: 24px;
@@ -67,17 +70,39 @@
     background-color: #49c5b6;
 }
 .fa-arrow-right{
-    margin: 4% 12%;
+    position: absolute;
+    top: 96%;
+    left: 12%;
 }
 .fa-arrow-left{
-    margin-top: 33%;
-    margin-left: 9%;
     position: absolute;
+    top: 96%;
+    left: 9%;
+}
+.menu{
+    cursor: pointer;
+}
+#submenu{
+    display: none; 
+}
+.drop-down{
+    background-color: white;
+    padding: 10% 8%;
+    position: relative;
+}
+.drop-an{
+    font-size: 20px;
+    color: #49c5b6;
+    text-decoration: none;
+}
+.drop-an:hover{
+    text-decoration: underline;
 }
 /*---------------------------- About Us Section ----------------------*/
 .main-aboutus{
     display: flex;
     padding: 3%;
+    padding-top: 0px;
 }
 .img-aboutus{
 	width: 100%;

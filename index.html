@@ -13,19 +13,85 @@
 	<script type="text/javascript" src="slick/slick/slick.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript">
-			$(document).ready(function(){
-				$('.slider').slick({
-  					infinite: true,
-  					arrows: true,
-  					nextArrow:'<i class="fas fa-arrow-right"></i>',
-        			prevArrow:'<i class="fas fa-arrow-left"></i>',
-  					autoplay: true,
-  					speed: 200,
-  					fade: true,
-  					cssEase: 'linear'
+		$(document).ready(function(){
+			$('.menu').click(function(){
+				$('#submenu').slideToggle().css({'display':'block','z-index':'99','position':'relative'});
 			});
-		});
-		</script>
+
+			$(".about-us").click(function() {
+ 				$('html, body').animate({
+     			scrollTop: $(".main-aboutus").offset().top
+ 				}, 1500);
+			});
+
+			$(".service").click(function() {
+				$('html, body').animate({
+ 			scrollTop: $(".main-services").offset().top
+				}, 1500);
+			});
+
+			$(".contact-us").click(function() {
+				$('html, body').animate({
+ 			scrollTop: $(".form").offset().top
+				}, 1500);
+			});
+
+			$(".get-btn").click(function() {
+				$('html, body').animate({
+ 			scrollTop: $(".contact").offset().top
+				}, 1500);
+			});
+
+			$('.slider').slick({
+				infinite: true,
+				arrows: true,
+				nextArrow:'<i class="fas fa-arrow-right"></i>',
+    			prevArrow:'<i class="fas fa-arrow-left"></i>',
+				autoplay: true,
+				speed: 200,
+				fade: true,
+				cssEase: 'linear'
+			});
+			$('#submit').click(function(){
+
+				var formData = {
+			    	'name' : $('#name').val(),
+			    	'email' : $('#email').val(),
+			    	'select' : $("#option-box").val(),
+		        }
+
+	        if (formData['name'] == "" || formData['email'] == "" || formData['select'] == "") {
+	    	
+	    		$('#error').html('Please fill all the fields to Register!').css({'color':'red','display':'block','margin-left':'10%', 'font-size' : '20px'});
+			}else{
+				$.ajax({
+
+	            type: "POST",
+
+	            url: "ajax.php",
+
+	            data: {
+	            		formData,
+	               },
+
+	            success: function (response) {
+	            if (response.length) {
+	            	   $('.myform').hide();
+	            	   $('.heading-form').hide();
+	            	   $('#error').hide();
+	                   $('#sent').html("Thank You for Registering!" + "<br>" + " We will get back to you soon.").css({'color':'#49c5b6','display':'block','margin-left':'5%', 'margin-right':'10%' , 'margin-top':'40%','font-size':'2em','font-weight': '700','text-align': 'center'});
+	               }               
+	            },
+	            error: function (jqXHR, textStatus, errorThrown) {
+	                console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+	            }  
+
+            });
+	    }
+    });
+});
+	
+	</script>
 </head>
 <body>
 	
@@ -42,8 +108,14 @@
 				<ul class="nav-bar">
 					<li class="nav-bar--"> <a class="nav-an about-us" href="javascript:void(0)">About us</a></li>
 					<li class="nav-bar--"> <a class="nav-an service" href="javascript:void(0)">Services</a></li>
-					<li class="nav-bar--"> <a class="nav-an guide-lines" href="javascript:void(0)">Contact Us</a></li>
-					<li class="nav-bar-- menu-bars"><img src="images/menu-bars.png"></li>
+					<li class="nav-bar--"> <a class="nav-an contact-us" href="javascript:void(0)">Contact Us</a></li>
+					<li class="nav-bar-- menu-bars"><img src="images/menu-bars.png" class="menu">
+                        <ul id="submenu"> 
+                        <li class="drop-down"><a href="#" class="drop-an">Web Advertisement</a></li>
+                        <li class="drop-down"><a href="#" class="drop-an">Web Creation</a></li> 
+                        <li class="drop-down"><a href="#" class="drop-an">Paid Ads</a></li>
+                    </ul>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -55,7 +127,7 @@
 		<section class="get-started">
 			<div class="slider">
 			<div class="text-get-started">
-				<h1 class="text-one">We are a social impact 1 <span class="get-span">digital agency</span></h1>
+				<h1 class="text-one">We are a social impact <span class="get-span">digital agency</span></h1>
 
 				<div class="btn-get-started">
 					<button class="get-btn">Get Started</button>
@@ -63,7 +135,7 @@
 			</div>
 
 			<div class="text-get-started">
-				<h1 class="text-one">We are a social impact 2<span class="get-span">digital agency</span></h1>
+				<h1 class="text-one">Get your ideas turn into a <span class="get-span">website</span></h1>
 
 				<div class="btn-get-started">
 					<button class="get-btn">Get Started</button>
@@ -71,7 +143,7 @@
 			</div>
 
 			<div class="text-get-started">
-				<h1 class="text-one">We are a social impact 3<span class="get-span">digital agency</span></h1>
+				<h1 class="text-one">Looking for a place to <span class="get-span">market your product?</span></h1>
 
 				<div class="btn-get-started">
 					<button class="get-btn">Get Started</button>
@@ -79,7 +151,7 @@
 			</div>
 		</div>
 			<div class="downarrow">
-				<img src="images/downarrow.png">
+				<img src="images/downarrow.png" class="down-arrow" alt="downarrow">
 			</div>
 
 		</section>
@@ -199,16 +271,20 @@
 
 				<h2 class="heading-form">Contact Us</h2>
 
-				<form>
-					<input type="text" name="" placeholder="Your Name" class="form-input name">
-					<input type="text" name="" placeholder="Email Address" class="form-input">
-					<select class="form-input">
-						<option value="" disabled selected>Select Service</option>
-						<option>Web Creation</option>
-						<option>Web Advertisement</option>
-						<option>Digital Marketing</option>
+				<span id="error"></span>
+
+				<span id="sent"></span>
+
+				<form method="post" action="#" class="myform">
+					<input type="text" id="name" placeholder="Your Name" class="form-input name">
+					<input type="text" id="email" placeholder="Email Address" class="form-input">
+					<select class="form-input" id="option-box">
+						<option class="value" value="" disabled selected>Select Service</option>
+						<option class="value" value="Web-Creation">Web Creation</option>
+						<option class="value" value="Web-Advertisement">Web Advertisement</option>
+						<option class="value" value="Digital-Marketing">Digital Marketing</option>
 					</select>
-					<input type="submit" name="" value="Contact Us" class="form-submit">
+					<input type="button" id="submit" value="Contact Us" class="form-submit">
 				</form>
 				
 			</div>
